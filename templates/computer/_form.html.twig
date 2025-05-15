@@ -1,0 +1,68 @@
+{% block message %}
+	{{ include('common/_messages.html.twig') }}
+{% endblock %}
+
+<div class="container-fluid">
+
+	{{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+	<div class="row">
+		<div class="col-lg-4">
+			{{ form_label(form.hostname) }}
+			{{ form_widget(form.hostname, {'attr': {'class': 'form-control form-control-sm'}}) }}
+		</div>
+
+		<div class="col-lg-4">
+			{{ form_label(form.ip) }}
+			{{ form_widget(form.ip, {'attr': {'class': 'form-control form-control-sm'}}) }}
+		</div>
+
+		<div class="col-lg-4">
+			{{ form_label(form.mac) }}
+			{{ form_widget(form.mac, {'attr': {'class': 'form-control form-control-sm'}}) }}
+		</div>
+
+		<div class="col-lg-4">
+			{{ form_label(form.lastSucessfullPing) }}
+			{{ form_widget(form.lastSucessfullPing, {'attr': {'class': 'form-control form-control-sm', 'data-controller' : 'datetimepicker', 'data-datetimepicker-format-value': 'yyyy-MM-dd'}}) }}
+		</div>
+
+		<div class="col-lg-4">
+			{{ form_label(form.lastInventory) }}
+			{{ form_widget(form.lastInventory, {'attr': {'class': 'form-control form-control-sm', 'data-controller' : 'datetimepicker', 'data-datetimepicker-format-value': 'yyyy-MM-dd'}}) }}
+		</div>
+
+		<div class="col-lg-4">
+			{{ form_label(form.lastOcsContact) }}
+			{{ form_widget(form.lastOcsContact, {'attr': {'class': 'form-control form-control-sm', 'data-controller' : 'datetimepicker', 'data-datetimepicker-format-value': 'yyyy-MM-dd'}}) }}
+		</div>
+
+		<div class="col-lg-4">
+			{{ form_label(form.origin) }}
+			{{ form_widget(form.origin, {'attr': {'class': 'form-control form-control-sm'}}) }}
+		</div>
+
+		<div class="col-lg-4 d-flex flex-nowrap align-items-end form-check">
+			{{ form_label(form.necessary) }}
+			{{ form_widget(form.necessary, {'attr': {'class': 'form-check-input'}}) }}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-6">
+			{{ form_label(form.notes) }}
+			{{ form_widget(form.notes, {
+            'attr': {
+                'class': 'form-control', 
+                'rows': '10'                
+            }
+        }) }}
+		</div>
+	</div>
+	<div id="buttons" class="mt-2">
+		<a href="{{ returnUrl is defined and not returnUrl is empty ? returnUrl : path('computer_index') }}" class="btn btn-secondary">{{ 'btn.cancel' | trans }}</a>
+		{% if not readonly %}
+			<button class="btn btn-primary" formnovalidate>{{ 'btn.save' | trans }}</button>
+		{% endif %}
+	</div>
+	{{ form_widget(form._token) }}
+	{{ form_end(form, {'render_rest': false}) }}
+</div>

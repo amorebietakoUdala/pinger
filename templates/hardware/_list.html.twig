@@ -1,0 +1,32 @@
+<div class="container-fluid" {{ stimulus_controller('modal') }}>
+	{% if hardwares is defined and hardwares|length > 0 %}
+		<table id="taula" class="table bootstrap-table mt-3" {{ stimulus_controller('table', { 'url': path('hardware_index'), 'exportName': 'hardwares', } ) }} data-page-number="{{ page }}" data-page-size="{{ pageSize ?? 200 }}" data-page-sortname="{{ sortName }}" data-page-sortorder="{{ sortOrder }}">
+			<thead>
+				<tr>
+					<th data-sortable="true">{{ 'hardware.name' | trans }}</th>
+					<th data-sortable="true">{{ 'hardware.ipaddres' | trans }}</th>
+					<th data-sortable="true">{{ 'hardware.lastdate' | trans }}</th>
+					<th data-sortable="true">{{ 'hardware.lastcome' | trans }}</th>
+					<th data-sortable="true">{{ 'hardware.userid' | trans }}</th>
+					{# <th>{{ 'table.options' | trans }}</th> #}
+				</tr>
+			</thead>
+			<tbody>
+				{% for hardware in hardwares %}
+					<tr>
+						<td>{{ hardware.name }}</td>
+						<td>{{ hardware.ipaddr }}</td>
+						<td>{{ hardware.lastdate | date('Y-m-d h:i:s') }}</td>
+						<td>{{ hardware.lastcome | date('Y-m-d h:i:s') }}</td>
+						<td>{{ hardware.userid }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	{% else %}
+		<div class="container alert alert-info m-2 text-center">
+			{{'message.no_records' | trans }}
+		</div>
+	{% endif %}
+
+</div>

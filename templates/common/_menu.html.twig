@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark mb-1">
+  <a class="navbar-brand" href="#">&nbsp;</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle {{ ( app.request.attributes.get('_route') == 'computer_index' ) ? 'active': '' }}" href="#" id="navbarComputer" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					{{ 'navitem.computers' | trans | capitalize }}
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarOwners">
+					<a class="dropdown-item {{ ( app.request.attributes.get('_route') == 'computer_index' ) ? 'active': '' }}" href="{{ path('computer_index') }}">{{"navitem.computer.list" | trans | capitalize}}</a>
+				</div>
+			</li>
+
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle {{ ( app.request.attributes.get('_route') == 'subnet_index' ) ? 'active': '' }}" href="#" id="navbarsubnet" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					{{ 'navitem.subnets' | trans | capitalize }}
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarOwners">
+					<a class="dropdown-item {{ ( app.request.attributes.get('_route') == 'subnet_index' ) ? 'active': '' }}" href="{{ path('subnet_index') }}">{{"navitem.subnet.list" | trans | capitalize}}</a>
+				</div>
+			</li>
+
+			{# <li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle {{ ( app.request.attributes.get('_route') == 'hardware_index' ) ? 'active': '' }}" href="#" id="navbarhardware" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					{{ 'navitem.hardware' | trans | capitalize }}
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarOwners">
+					<a class="dropdown-item {{ ( app.request.attributes.get('_route') == 'hardware_index' ) ? 'active': '' }}" href="{{ path('hardware_index') }}">{{"navitem.hardware.list" | trans | capitalize}}</a>
+				</div>
+			</li> #}
+    </ul>
+  </div>
+
+</nav>
+		
+

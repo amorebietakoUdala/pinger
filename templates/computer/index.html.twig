@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'title.computer.search' | trans }}{% endblock %}
+
+{% block body %}
+    <div>
+        <div class="container-fluid">
+            {{ include('computer/_formSearchForm.html.twig') }}
+            <div data-reload-content-target="content">
+                {{ include('computer/_list.html.twig') }}
+            </div>
+            <div class="float-right mb-1">
+                <a class="btn btn-primary rounded-circle fixed-bottom-right" data-action="modal-form#openModal">
+                    <i class="fas fa-plus" title='{{ "btn.new" | trans | capitalize }}'></i>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

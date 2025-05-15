@@ -1,0 +1,17 @@
+<div class="modal" tabindex="-1" data-modal-target="modal">
+	<div class="modal-dialog {{ scrollable is defined and scrollable ? 'modal-dialog-scrollable': '' }} {{ size is defined and size == 'large' ? 'modal-lg': size is defined and size == 'extra-large' ? 'modal-xl' : '' }}">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" data-modal-target="modalTitle">{{ modalTitle }}</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body" data-modal-target="modalBody">
+				
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-action="modal#submitForm" data-modal-target="modalSaveButton">{{'btn.save' | trans}}</button>
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">{{'btn.cancel' | trans}}</button>
+			</div>
+		</div>
+	</div>
+</div>

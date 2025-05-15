@@ -1,0 +1,53 @@
+<div class="container-fluid" {{ stimulus_controller('modal') }}>
+	{% if subnets is defined and subnets|length > 0 %}
+		<table id="taula" class="table bootstrap-table mt-3" data-page-size="{{ pageSize }}" data-page-sortname="{{ sortName }}" data-page-sortorder="{{ sortOrder }}" data-page-number="{{ page }}" {{ stimulus_controller('table', { 'url': path('subnet_index'), 'exportName': 'subnets'} ) }}>
+			<thead>
+				<tr>
+					<th>{{ 'subnet.pk' | trans }}</th>
+					<th>{{ 'subnet.netId' | trans }}</th>
+					<th>{{ 'subnet.name' | trans }}</th>
+					<th>{{ 'subnet.id' | trans }}</th>
+					<th>{{ 'subnet.mask' | trans }}</th>
+					<th>{{ 'subnet.available_hosts' | trans }}</th>
+					<th>{{ 'subnet.ocupyte' | trans }}</th>
+					<th>{{ 'subnet.available' | trans }}</th>
+					<th>{{ 'subnet.hostnotname' | trans }}</th>
+					<th>{{ 'subnet.firstIp' | trans }}</th>
+					<th>{{ 'subnet.lastIp' | trans }}</th>
+					<th>{{ 'subnet.tag' | trans }}</th>
+					<th>Options</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for subnet in subnets %}
+					<tr>
+						<td>{{ subnet.pk }}</td>
+						<td>{{ subnet.netId }}</td>
+						<td>{{ subnet.name }}</td>
+						<td>{{ subnet.id }}</td>
+						<td>{{ subnet.mask }}</td>
+						<td>{{ subnet.availableHosts }}</td>
+						<td>{{ counters[subnet.pk] }}</td>
+						<td>{{ subnet.availableHosts - counters[subnet.pk] }}</td>
+						<th>{{ noHostnameCounters[subnet.pk] }}</th>
+						<td>{{ subnet.firstUsableIp }}</td>
+						<td>{{ subnet.lastUsableIp }}</td>
+						<td>{{ subnet.tag }}</td>
+						<td>
+							<a class="text-decoration-none" href="{{ path('computer_index', {'start_ip': subnet.firstUsableIp, 'end_ip': subnet.lastUsableIp}) }}" data-action="click->table#onClick" data-pagination="false" title="{{ 'btn.search' | trans }}">
+								<i class="fa fa-search"></i>
+							</a>&nbsp;
+							<a class="text-decoration-none" href="{{ path('subnet_free_ips_index', {'subnet': subnet.pk}) }}" data-action="click->table#onClick" data-pagination="false" title="{{ 'btn.free' | trans }}">
+								<i class="fa fa-asterisk"></i>
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	{% else %}
+		<div class="container alert alert-info m-2 text-center">
+			{{'message.no_records' | trans }}
+		</div>
+	{% endif %}
+</div>

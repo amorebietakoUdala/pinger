@@ -1,0 +1,95 @@
+messages.appTitle: "Pinger"
+link.logout: "Salir"
+
+# Menu
+navitem.computers: "Ordenadores"
+navitem.computer.list: "Lista"
+navitem.subnets: "Subredes"
+navitem.subnet.list: "Lista"
+navitem.hardware: "Hardware"
+navitem.hardware.list: "Lista"
+
+# Labels
+label.options: 'Opciones'
+table.options: 'Opciones'
+
+# Titles
+title.computer.edit: "Editar"
+title.computer.search: "Ordenadores"
+title.computer.show: "Ordenador"
+title.subnet.search: "Subredes"
+title.hardware.search: "Hardware"
+
+# Entities
+computer.id: "Id"
+computer.hostname: "Hostname"
+computer.ip: "Ip"
+computer.status: "Estado"
+computer.mac: "Mac"
+computer.alive: "Vivo"
+computer.lastSucessfullPing: "Ultimo ping exitoso"
+computer.lastInventory: "Último inventario Ocs"
+computer.lastOcsContact: "Último contacto Ocs"
+computer.origin: "Origen"
+computer.startip: "Ip de inicio"
+computer.endip: "Ip de fin"
+computer.necessary: "Necesario"
+computer.notes: "Notas"
+
+subnet.pk: "Id"
+subnet.netId: "Red"
+subnet.name: "Nombre de la red"
+subnet.id: "Id de Red"
+subnet.mask: "Mascara de Red"
+subnet.available_hosts: "Hosts"
+subnet.ocupyte: "Hosts ocupados"
+subnet.available: "Hosts disponibles"
+subnet.tag: "Etiqueta"
+subnet.firstIp: "Primera Ip"
+subnet.lastIp: "Ultima Ip"
+subnet.hostnotname: "Hosts sin nombre"
+
+hardware.name: 'Hostname'
+hardware.ipaddres: 'Ip'
+hardware.lastdate: 'Último inventario'
+hardware.lastcome: 'Último contacto'
+hardware.userid: 'Último contacto'
+
+text.last.number: "Último número : "
+
+# Buttons
+btn.cancel: "Cancelar"
+btn.save: "Guardar"
+btn.ping: "Ping"
+btn.arp: "Arp"
+btn.new: "Nuevo"
+btn.search: "Buscar"
+btn.free: "Ip Libres"
+btn.lastnumber: "Ultimo número"
+
+# Labels
+label.yes?: "¿Sí?"
+label.yes: "Sí"
+label.no: "No"
+
+# Messages
+message.noIp: "El ordenador no tiene Ip"
+message.no_records: "No hay resultados"
+message.computer.saved: "El ordenador se ha guardado correctamente"
+message.computer.deleted: "El ordenador se ha borrado correctamente"
+message.computererror.search: "Tienes que rellenar los campos de Ip de inicio y de fin"
+message.computer.error.necessary: "El ordenador no se puede borrar porque está marcado como necesario"
+message.confirmationTitle: "Detalles"
+
+# Mail
+text.mailnohost: "Los siguientes ordenadores no tienen hostname"
+label.hostname: "Hostname"
+label.ip: "Ip"
+label.lastSucessfullPing: "Ultimo ping exitoso"
+label.hardwareId: "Id de Hardware"
+messages.results0: "No hay resultados"
+
+# Others
+"Pinger": "Pinger"
+"OCS" : "OCS"
+"Active Directory" : "Active Directory"

@@ -1,0 +1,94 @@
+<div class="container-fluid" {{ stimulus_controller('modal') }}>
+	<div id="toolbar">
+		<a href="#" data-action="click->modal#opennextnumber" data-url="{{ absolute_url( path('computer_new_number') )}}" class="btn btn-primary">{{ "btn.lastnumber" | trans }}</a>
+	</div>
+	{% if computers is defined and computers|length > 0 %}
+
+		<table id="taula" class="table bootstrap-table" {{ stimulus_controller('table', { 'url': path('computer_index'), 'exportName': 'computers', } ) }} 
+			data-page-number="{{ page }}" 
+			data-page-size="{{ pageSize ?? 100 }}" 
+			data-sort-name="{{ sortName }}" 
+			data-sort-order="{{ sortOrder }}" 
+			data-toolbar="#toolbar">
+			<thead>
+				<tr>
+					<th data-sortable="true">{{ 'computer.id' | trans }}</th>
+					<th data-sortable="true">{{ 'computer.hostname' | trans }}</th>
+					<th data-sortable="true">{{ 'computer.ip' | trans }}</th>
+					<th data-sortable="true">{{ 'computer.mac' | trans }}</th>
+					<th data-sortable="true">{{ 'computer.alive' | trans }}</th>
+					<th data-sortable="true">{{ 'computer.lastSucessfullPing' | trans }}</th>
+					<th data-sortable="true">{{ 'computer.lastOcsContact' | trans }}</th>
+					<th data-sortable="true">{{ 'computer.origin' | trans }}</th>
+					<th data-sortable="true">{{ 'computer.necessary' | trans }}</th>
+					<th>Options</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for computer in computers %}
+					<tr>
+						<td>{{ computer.id }}</td>
+						<td>{{ computer.hostname }}</td>
+						<td>{{ computer.ip }}</td>
+						<td>
+							<span class="pointer" data-bs-toggle="popover" {% if computer.mac != null %} {{ stimulus_controller('vendor-popover', { 'serviceUrl': path("api_get_vendor", { 'mac' : computer.mac } ) })}} {% endif %} data-action='click->vendor-popover#toggle' data-action='click->vendor-popover#toggle'>{{ computer.mac }}</span>
+						</td>
+						{% set twoMonthAgo = date()|date_modify('-2 month') %}
+						{% set oneDayAgo = date()|date_modify('-2 day') %}
+						{% if computer.lastSucessfullPing != null and computer.lastSucessfullPing > oneDayAgo %}
+							<td title="{{ 'label.yes' | trans }}" class="bg-success text-center text-white">{{ 'label.yes' | trans }}</td>
+						{% elseif computer.lastSucessfullPing != null and computer.lastSucessfullPing > twoMonthAgo %}
+							<td title="{{ 'label.yes?' | trans }}" class="bg-warning text-center">{{ 'label.yes?' | trans }}</td>
+						{% else %}
+							<td title="{{ 'label.no' | trans }}" class="bg-danger text-center text-white">{{ 'label.no' | trans }}</td>
+						{% endif %}
+						<td>{{ computer.lastSucessfullPing ? computer.lastSucessfullPing | date('Y-m-d h:i') : '' }}</td>
+						<td>{{ computer.lastOcsContact ? computer.lastOcsContact | date('Y-m-d h:i') : '' }}</td>
+						{% if computer.hardwareId is not empty %}
+							<td>
+								<a target="_blank" href="http://inbentario/ocsreports/index.php?function=computer&head=1&systemid={{ computer.hardwareId }}">{{ computer.origin }}</a>
+							</td>
+						{% else %}
+							<td>{{ computer.origin }}</td>
+						{% endif %}
+						<td>{{ computer.necessary ? 'label.yes' | trans : 'label.no' | trans }}</td>
+						<td>
+							<a class="text-decoration-none" href="{{ path ("computer_show",{'id': computer.id })}}" data-action="click->table#onClick" data-pagination="false">
+								<i class="fa fa-eye"></i>
+							</a>
+
+							&nbsp;<a class="text-decoration-none" href="{{ path ("computer_edit",{'id': computer.id })}}" data-action="click->table#onClick" data-pagination="false">
+								<i class="fa fa-edit"></i>
+							</a>
+
+							&nbsp;
+							<a class="text-decoration-none" data-action="click->modal#openping" data-url="{{ absolute_url( path('computer_ping', {'id': computer.id}) )}}" data-message="{{ "message.noIp" | trans }}">
+								<i class="fas fa-wifi" title='{{ "btn.ping" | trans | capitalize }}'></i>
+							</a>
+							&nbsp;
+							<a class="text-decoration-none" data-action="click->modal#openarp" data-url="{{ absolute_url( path('computer_arp', {'id': computer.id}) )}}" data-message="{{ "message.noIp" | trans }}">
+								<i class="fas fa-broadcast-tower" title='{{ "btn.arp" | trans | capitalize }}'></i>
+							</a>
+							&nbsp;
+							{% if not computer.necessary %}
+								<a href="{{ path ('computer_delete',{'id': computer.id })}}" data-action="click->table#onClick" data-pagination="true" data-return="false" data-confirm="true">
+									<i class="fa fa-trash"></i>
+								</a>
+							{% endif %}
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		{{ include('common/_alert.html.twig') }}
+	{% else %}
+		<div class="alert alert-info text-center">
+			{{'message.no_records' | trans }}
+		</div>
+	{% endif %}
+	{{ include('common/_modal.html.twig', {
+      		'modalTitle': 'message.confirmationTitle' | trans,
+      		}) 
+   		}}
+</div>

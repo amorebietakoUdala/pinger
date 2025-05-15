@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * IMPORTANT: We are not using the asset mapper system in this project for the moment. Using yarn instead.
+ * 
  * Returns the importmap for this application.
  *
  * - "path" is a path inside the asset mapper system. Use the
@@ -24,5 +26,25 @@ return [
     ],
     '@hotwired/turbo' => [
         'version' => '7.3.0',
+    ],
+    'bootstrap' => [
+        'version' => '5.3.3',
+    ],
+    '@popperjs/core' => [
+        'version' => '2.11.8',
+    ],
+    'bootstrap/dist/css/bootstrap.min.css' => [
+        'version' => '5.3.3',
+        'type' => 'css',
+    ],
+    '@fortawesome/fontawesome-free' => [
+        'version' => '6.7.2',
+    ],
+    '@fortawesome/fontawesome-free/css/fontawesome.min.css' => [
+        'version' => '6.7.2',
+        'type' => 'css',
+    ],
+    'bootstrap/dist/js/bootstrap.bundle.min.js' => [
+        'version' => '5.3.3',
     ],
 ];

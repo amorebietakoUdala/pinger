@@ -1,0 +1,43 @@
+{% apply inline_css(source('@styles/mail.css')) %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+
+	</head>
+	<body>
+		{% block body %}
+			<main style="font-family: 'Roboto'">
+				<div class="container">
+					<h3> {{"text.mailnohost" | trans | capitalize}} </h3>
+				</div>
+				<br>
+				<div class="container">
+					<table id="taula" class="bootstrap-table mt-3" style="table-layout: auto; width: 100%">
+						<thead>
+							<tr text-align="left">
+								<th data-sortable="true" data-field="ip" style="text-align: left">{{"label.ip" | trans | capitalize}}</th>
+								<th data-sortable="true" data-field="lastSucessfullPing" style="text-align: left">{{"label.lastSucessfullPing" | trans | capitalize}}</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% if computers is defined and computers | length > 0 %}
+								{% for computer in computers %}
+									<tr>
+										<td>{{ computer.ip }}</td>
+										<td>{{ computer.lastSucessfullPing | date('d/m/Y H:i:s') }}</td>
+									</tr>
+								{% endfor %}
+							{% else %}
+								<tr>
+									<td class="text-center" colspan="7">{{"messages.results0" | trans }}</td>
+								</tr>
+							{% endif %}
+						</tbody>
+					</table>
+				</div>
+			</main>
+		{% endblock %}
+	</body>
+</html>
+{% endapply %}

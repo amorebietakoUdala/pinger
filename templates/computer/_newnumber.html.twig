@@ -1,0 +1,8 @@
+
+{% block body %}
+    {% if nextNumber is defined %}
+        <div class="">
+            {{'text.last.number' | trans}} {{ "%05d"|format(nextNumber) }}
+        </div>
+    {% endif %}
+{% endblock %}

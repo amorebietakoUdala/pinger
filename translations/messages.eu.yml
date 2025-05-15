@@ -1,0 +1,96 @@
+messages.appTitle: "Pinger"
+link.logout: "Irten"
+
+# Menu
+navitem.computers: "Ordenagailuak"
+navitem.computer.list: "Zerrenda"
+navitem.subnets: "Azpiegiturak"
+navitem.subnet.list: "Zerrenda"
+navitem.hardware: "Hardware-ak"
+navitem.hardware.list: "Zerrenda"
+
+# Labels
+label.options: 'Aukerak'
+table.options: 'Aukerak'
+
+# Titles
+title.computer.search: "Ordenagailuak"
+title.computer.show: "Ordenagailua"
+title.computer.edit: "Editatu"
+title.subnet.search: "Azpiegiturak"
+title.hardware.search: "Hardware"
+
+# Entities
+computer.id: "Id-a"
+computer.hostname: "Hostname"
+computer.ip: "Ip-a"
+computer.status: "Egoera"
+computer.mac: "Mac-a"
+computer.alive: "Bizirik"
+computer.lastSucessfullPing: "Azken ping-a ondo"
+computer.lastInventory: "Azken Ocs inbentarioa"
+computer.lastOcsContact: "Azken Ocs kontaktua"
+computer.origin: "Jatorria"
+computer.startip: "Hasierako Ip-a"
+computer.endip: "Azken Ip-a"
+computer.necessary: "Beharrezkoa"
+computer.notes: "Oharrak"
+
+subnet.pk: "Id-a"
+subnet.netId: "Sarea"
+subnet.name: "Sarearen Izena"
+subnet.id: "Sarearen Id-a"
+subnet.mask: "Sarearen Maskara"
+subnet.available_hosts: "Hostak"
+subnet.ocupyte: "Host okupatuak"
+subnet.available: "Host Eskuragarriak"
+subnet.tag: "Etiketa"
+subnet.firstIp: "Lehen Ip-a"
+subnet.lastIp: "Azken Ip-a"
+subnet.hostnotname: "Izena ez duten hostak"
+
+hardware.name: 'Hostname'
+hardware.ipaddres: 'Ip'
+hardware.lastdate: 'Azken inbentarioa'
+hardware.lastcome: 'Azken kontaktua'
+hardware.userid: 'Azken Ocs kontaktua'
+
+text.last.number: "Azken zenbakia : "
+
+
+# Buttons
+btn.cancel: "Itzuli"
+btn.save: "Gorde"
+btn.ping: "Ping"
+btn.arp: "Arp"
+btn.new: "Berria"
+btn.search: "Bilatu"
+btn.free: "Ip libreak"
+btn.lastnumber: "Azken zenbakia"
+
+# Labels
+label.yes?: "Bai?"
+label.yes: "Bai"
+label.no: "Ez"
+
+# Messages
+message.noIp: "Ordenagailuak ez du Ip-a"
+message.no_records: "Ez dago erregistorik aurkitu"
+message.computer.saved: "EOrdenagailua behar bezala gorde da"
+message.computer.deleted: "Ordenagailua behar bezala ezabatu da"
+message.computererror.search: "Hasierako ip-a eta amaierako ip-a bete behar da"
+message.computer.error.necessary: "Ordenagailua ezin da ezabatu beharrezkoa bezala markatuta dagoelako"
+message.confirmationTitle: "Xehetasunak"
+
+# Mail
+text.mailnohost: "Hurrengo ordenagailua ez dute Hostname-ik"
+label.hostname: "Hostname-a"
+label.ip: "Ip-a"
+label.lastSucessfullPing: "Azken ping-a ondo"
+label.hardwareId: "Hardware Id-a"
+messages.results0: "Ez dago emaitzarik"
+
+# Others
+"Pinger": "Pinger"
+"OCS" : "OCS"
+"Active Directory" : "Active Directory"

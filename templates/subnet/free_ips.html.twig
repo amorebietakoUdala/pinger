@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'title.subnet.search' | trans }}{% endblock %}
+
+{% block body %}
+    <div class="container-fluid mt-4">
+        <div class="container-fluid multi-column-list" {{ stimulus_controller('modal') }}>
+            {% if ips is defined and ips|length > 0 %}
+                <ul class="list-unstyled">
+                    {% for key,ip in ips %}
+                        <li>{{ ip }}</li>
+                    {% endfor %}
+                {% else %}
+                    <div class="container alert alert-info m-2 text-center">
+                        {{'message.no_records' | trans }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+            <a href="{{ returnUrl is defined and not returnUrl is empty ? returnUrl : path('subnet_index') }}" class="btn btn-secondary">{{ 'btn.cancel' | trans }}</a>
+        </div>
+    </div>
+{% endblock %}
