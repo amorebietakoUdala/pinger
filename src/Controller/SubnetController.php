@@ -59,7 +59,6 @@ final class SubnetController extends BaseController
             if ((array_key_exists($ip, $ips)) !== false) {
                 unset($ips[$ip]);
             }
-            dump($ips);
         }
         $template = $request->isXmlHttpRequest() ? '_list.html.twig' : 'free_ips.html.twig';
 

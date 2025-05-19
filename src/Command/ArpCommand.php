@@ -47,7 +47,6 @@ class ArpCommand extends Command
         try {
             $pingResult = $this->arpService->arp($ip);
             $parsedResult = $this->arpService->parseArpResult($pingResult, $ip);
-            dump($parsedResult);
         } catch (ProcessFailedException $e) {
             $io->error('Error arp-ing '.$ip);
         } catch ( ProcessTimedOutException $e ) {
