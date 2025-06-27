@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d16354d9110f2391c3b7158fc250c198",
+    "content-hash": "a09489077a20575204a835370ff625df",
     "packages": [
         {
             "name": "amorebietakoudala/user-bundle",
@@ -55,6 +55,59 @@
                 "source": "https://github.com/amorebietakoUdala/user-bundle/tree/2.0.6"
             },
             "time": "2025-02-28T10:13:28+00:00"
+        },
+        {
+            "name": "art-of-wifi/unifi-api-client",
+            "version": "v2.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Art-of-WiFi/UniFi-API-client.git",
+                "reference": "2cc60dbc3c3b3dcce43e975132de8bdfec794e98"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Art-of-WiFi/UniFi-API-client/zipball/2cc60dbc3c3b3dcce43e975132de8bdfec794e98",
+                "reference": "2cc60dbc3c3b3dcce43e975132de8bdfec794e98",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=7.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "UniFi_API\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Art of WiFi",
+                    "email": "info@artofowifi.net",
+                    "homepage": "https://artofwifi.net"
+                }
+            ],
+            "description": "API client class for use with Ubiquiti's UniFi controller",
+            "homepage": "https://github.com/Art-of-WiFi/UniFi-API-client",
+            "keywords": [
+                "UBNT",
+                "api",
+                "client",
+                "controller",
+                "ubiquiti",
+                "unifi",
+                "unifi os"
+            ],
+            "support": {
+                "issues": "https://github.com/Art-of-WiFi/UniFi-API-client/issues",
+                "source": "https://github.com/Art-of-WiFi/UniFi-API-client/tree/v2.0.5"
+            },
+            "time": "2025-03-09T11:12:03+00:00"
         },
         {
             "name": "composer/semver",

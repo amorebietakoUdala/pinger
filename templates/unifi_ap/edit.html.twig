@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}            
+    {% if readonly %}
+        {{ 'title.unifiAp.show' | trans }}
+    {% else %}
+        {{ 'title.unifiAp.edit' | trans }}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-row justify-content-middle" {{ stimulus_controller('computer-action')}}>
+        <h1>
+            {% if readonly %}
+                {{ 'title.unifiAp.show' | trans }}
+            {% else %}
+                {{ 'title.unifiAp.edit' | trans }}
+            {% endif %}
+        </h1>&nbsp;
+    </div>
+
+    {{ include('unifi_ap/_form.html.twig',{
+        'readonly': readonly
+    }) }}
+    {{ include('common/_alert.html.twig') }}
+{% endblock %}

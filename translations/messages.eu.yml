@@ -8,6 +8,10 @@ navitem.subnets: "Azpiegiturak"
 navitem.subnet.list: "Zerrenda"
 navitem.hardware: "Hardware-ak"
 navitem.hardware.list: "Zerrenda"
+navitem.phones: "Telefonoak"
+navitem.phone.list: "Zerrenda"
+navitem.unifiAps: "Unifi APak"
+navitem.unifiAps.list: "Zerrenda"
 
 # Labels
 label.options: 'Aukerak'
@@ -19,9 +23,13 @@ title.computer.show: "Ordenagailua"
 title.computer.edit: "Editatu"
 title.subnet.search: "Azpiegiturak"
 title.hardware.search: "Hardware"
+title.phone.search: "Telefonoak"
+title.unifiAp.edit: "Editatu"
+title.unifiAp.show: "Ikusi"
+
 
 # Entities
-computer.id: "Id-a"
+id: "Id-a"
 computer.hostname: "Hostname"
 computer.ip: "Ip-a"
 computer.status: "Egoera"
@@ -55,6 +63,21 @@ hardware.lastdate: 'Azken inbentarioa'
 hardware.lastcome: 'Azken kontaktua'
 hardware.userid: 'Azken Ocs kontaktua'
 
+phone.ip: "Ipa"
+phone.mac: "Maca"
+phone.extension: "Luzapena"
+phone.model: "Modeloa"
+phone.firmware: "Firmwarea"
+
+unifiAp.ip: "Ipa"
+unifiAp.mac: "Maca"
+unifiAp.name: "Izena"
+unifiAp.state: "Egoera"
+unifiAp.lastTimeOnline: "Online azkenengo aldiz"
+unifiAp.pingStatus: "Azken ping egoera"
+unifiAp.lastSuccessfullPing: "Azken ping arrakastatsuaren data"
+unifiAp.excludeFromReport: "Txostenetatik kanpo utzi"
+
 text.last.number: "Azken zenbakia : "
 
 
@@ -81,12 +104,17 @@ message.computer.deleted: "Ordenagailua behar bezala ezabatu da"
 message.computererror.search: "Hasierako ip-a eta amaierako ip-a bete behar da"
 message.computer.error.necessary: "Ordenagailua ezin da ezabatu beharrezkoa bezala markatuta dagoelako"
 message.confirmationTitle: "Xehetasunak"
+message.computer.error.ip: "Hasierako ip-a eta amaierako ip-a bete behar dituzu"
+message.unifiAccessPoint.deleted: "Access Point-a behar bezala ezabatu da"
 
 # Mail
 text.mailnohost: "Hurrengo ordenagailua ez dute Hostname-ik"
 label.hostname: "Hostname-a"
 label.ip: "Ip-a"
 label.lastSucessfullPing: "Azken ping-a ondo"
+label.name: "Izena"
+label.state: "Egoera"
+label.pingStatus: "Ping egoera"
 label.hardwareId: "Hardware Id-a"
 messages.results0: "Ez dago emaitzarik"
 

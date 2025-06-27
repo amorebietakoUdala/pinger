@@ -1,0 +1,79 @@
+<div class="container-fluid" {# {{ stimulus_controller('modal') }} #}>
+	{% if unifiAps is defined and unifiAps|length > 0 %}
+
+		<table id="taula" class="table bootstrap-table" {{ stimulus_controller('table', { 'url': path('phone_index'), 'exportName': 'phones', } ) }} 
+			data-page-number="{{ page }}" 
+			data-page-size="{{ pageSize ?? 100 }}" 
+			data-sort-name="{{ sortName }}" 
+			data-sort-order="{{ sortOrder }}" 
+			data-toolbar="#toolbar">
+			<thead>
+				<tr>
+					<th data-sortable="true">{{ 'id' | trans }}</th>
+					<th data-sortable="true">{{ 'unifiAp.name' | trans }}</th>
+					<th data-sortable="true">{{ 'unifiAp.ip' | trans }}</th>
+					<th data-sortable="true">{{ 'unifiAp.mac' | trans }}</th>
+					<th data-sortable="true">{{ 'unifiAp.state' | trans }}</th>
+					<th data-sortable="true">{{ 'unifiAp.lastTimeOnline' | trans }}</th>
+					<th data-sortable="true">{{ 'unifiAp.pingStatus' | trans }}</th>
+					<th data-sortable="true">{{ 'unifiAp.lastSuccessfullPing' | trans }}</th>
+					<th data-sortable="true">{{ 'unifiAp.excludeFromReport' | trans }}</th>
+					<th>{{ 'table.options' | trans }}</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for unifiAp in unifiAps %}
+					<tr>
+						<td>{{ unifiAp.id }}</td>
+						<td>{{ unifiAp.name }}</td>
+						<td>{{ unifiAp.ip }}</td>
+						<td>{{ unifiAp.mac }}</td>
+						<td>{{ unifiAp.state }}</td>
+						<td>{{ unifiAp.lastTimeOnline != null ? unifiAp.lastTimeOnline | date('Y-m-d h:i') : '' }}</td>
+						<td>{{ unifiAp.pingStatus }}</td>
+						<td>{{ unifiAp.lastSuccessfullPing != null ? unifiAp.lastSuccessfullPing | date('Y-m-d h:i') : '' }}</td>
+						<td>{{ unifiAp.excludeFromReport ? 'label.yes' | trans : 'label.no' | trans }}</td>
+						<td>
+							<a class="text-decoration-none" href="{{ path ("unifi_aps_show",{'id': unifiAp.id })}}" data-action="click->table#onClick" data-pagination="false">
+								<i class="fa fa-eye"></i>
+							</a>
+
+							&nbsp;<a class="text-decoration-none" href="{{ path ("unifi_aps_edit",{'id': unifiAp.id })}}" data-action="click->table#onClick" data-pagination="false">
+								<i class="fa fa-edit"></i>
+							</a>
+							&nbsp;<a href="{{ path ('unifi_aps_delete',{'id': unifiAp.id })}}" data-action="click->table#onClick" data-pagination="true" data-return="false" data-confirm="true">
+								<i class="fa fa-trash"></i>
+							</a>
+						{#
+							&nbsp;
+							<a class="text-decoration-none" data-action="click->modal#openping" data-url="{{ absolute_url( path('phone_ping', {'id': unifiAp.id}) )}}" data-message="{{ "message.noIp" | trans }}">
+								<i class="fas fa-wifi" title='{{ "btn.ping" | trans | capitalize }}'></i>
+							</a>
+							&nbsp;
+							<a class="text-decoration-none" data-action="click->modal#openarp" data-url="{{ absolute_url( path('phone_arp', {'id': unifiAp.id}) )}}" data-message="{{ "message.noIp" | trans }}">
+								<i class="fas fa-broadcast-tower" title='{{ "btn.arp" | trans | capitalize }}'></i>
+							</a>
+							&nbsp;
+							{% if not unifiAp.necessary %}
+								<a href="{{ path ('phone_delete',{'id': unifiAp.id })}}" data-action="click->table#onClick" data-pagination="true" data-return="false" data-confirm="true">
+									<i class="fa fa-trash"></i>
+								</a>
+							{% endif %}
+						 #}
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		{{ include('common/_alert.html.twig') }}
+	{% else %}
+		<div class="alert alert-info text-center">
+			{{'message.no_records' | trans }}
+		</div>
+	{% endif %}
+	{# {{ include('common/_modal.html.twig', {
+      		'modalTitle': 'message.confirmationTitle' | trans,
+      		}) 
+   		}} #}
+</div>

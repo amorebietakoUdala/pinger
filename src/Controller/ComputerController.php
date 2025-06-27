@@ -11,6 +11,7 @@ use App\Repository\Default\ComputerRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[Route('/{_locale}')]
 final class ComputerController extends BaseController
@@ -18,7 +19,8 @@ final class ComputerController extends BaseController
     public function __construct(
         private ComputerRepository $repo,
         private readonly MailerInterface $mailer,
-        private readonly EntityManagerInterface $em
+        private readonly EntityManagerInterface $em,
+        private readonly TranslatorInterface $translator,
     ) {}
 
     #[Route('/computer', name: 'computer_index')]
@@ -40,6 +42,16 @@ final class ComputerController extends BaseController
             $data = $form->getData();
             $startIp = $data['startIp'] ?? null;
             $endIp = $data['endIp'] ?? null;
+
+
+            if (($startIp && !$endIp) || (!$startIp && $endIp)) {
+                $this->addFlash('error', $this->translator->trans('message.computer.error.ip') );
+                $computers = $this->repo->findAll();
+                return $this->render('computer/index.html.twig', [
+                    'computers' => $computers,
+                    'form' => $form->createView(),
+                ]);
+            }
 
             $computers = $this->repo->findByFilter($data);
             $this->queryParams['page'] = 1;
@@ -65,6 +77,7 @@ final class ComputerController extends BaseController
             ]
         ]);
     }
+
 
     #[Route(path: '/computer/{id}', name: 'computer_show', methods: ['GET', 'POST'])]
     public function show(Request $request, Computer $computer): Response
@@ -122,5 +135,4 @@ final class ComputerController extends BaseController
         $this->addFlash('success', 'message.computer.deleted');
         return $this->redirectToRoute('computer_index');
     }
-
 }

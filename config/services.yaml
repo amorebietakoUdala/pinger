@@ -35,6 +35,12 @@ services:
             $mailerFrom: "%env(MAILER_FROM)%"
             $mailerTo: "%env(csv:MAILER_TO)%"
             $excludedSubnets: '%excludedSubnets%'
+            $unifiControllerDebug: '%env(bool:UNIFI_CONTROLLER_DEBUG)%'
+            $unifiControllerUser: '%env(UNIFI_CONTROLLER_USER)%'
+            $unifiControllerPassword: '%env(UNIFI_CONTROLLER_PASSWORD)%'
+            $unifiControllerUrl: '%env(UNIFI_CONTROLLER_URL)%'
+            $unifiControllerSiteId: '%env(UNIFI_CONTROLLER_SITE_ID)%'
+            $unifiControllerVersion: '%env(UNIFI_CONTROLLER_VERSION)%'
 
     Symfony\Component\Ldap\Ldap:
       arguments: ['@Symfony\Component\Ldap\Adapter\ExtLdap\Adapter']

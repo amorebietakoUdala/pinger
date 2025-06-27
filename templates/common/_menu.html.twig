@@ -24,6 +24,24 @@
 				</div>
 			</li>
 
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle {{ ( app.request.attributes.get('_route') == 'phone_index' ) ? 'active': '' }}" href="#" id="navbarsubnet" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					{{ 'navitem.phones' | trans | capitalize }}
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarOwners">
+					<a class="dropdown-item {{ ( app.request.attributes.get('_route') == 'phone_index' ) ? 'active': '' }}" href="{{ path('phone_index') }}">{{"navitem.phone.list" | trans | capitalize}}</a>
+				</div>
+			</li>
+
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle {{ ( app.request.attributes.get('_route') == 'unifi_aps_index' ) ? 'active': '' }}" href="#" id="navbarsubnet" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					{{ 'navitem.unifiAps' | trans | capitalize }}
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarOwners">
+					<a class="dropdown-item {{ ( app.request.attributes.get('_route') == 'unifi_aps_index' ) ? 'active': '' }}" href="{{ path('unifi_aps_index') }}">{{"navitem.unifiAp.list" | trans | capitalize}}</a>
+				</div>
+			</li>
+
 			{# <li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle {{ ( app.request.attributes.get('_route') == 'hardware_index' ) ? 'active': '' }}" href="#" id="navbarhardware" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					{{ 'navitem.hardware' | trans | capitalize }}

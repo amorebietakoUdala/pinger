@@ -184,19 +184,20 @@ class PingComputersCommand extends Command
     }
 
     private function updateWithHardwareData(Computer &$computer, ?Hardware $hardware): ?Hardware
-{
-    if (null !== $hardware) {
-        if (!$computer->getHostname()) {
-            $computer->setHostname($hardware->getName());
+    {
+        if (null !== $hardware) {
+            if (!$computer->getHostname()) {
+                $computer->setHostname($hardware->getName());
+            }
+            $computer->setLastInventory($hardware->getLastdate());
+            $computer->setLastOcsContact($hardware->getLastcome());
+            $computer->setHardwareId($hardware->getId());
+            $computer->setOrigin('OCS');
         }
-        $computer->setLastInventory($hardware->getLastdate());
-        $computer->setLastOcsContact($hardware->getLastcome());
-        $computer->setHardwareId($hardware->getId());
-        $computer->setOrigin('OCS');
+        
+        return $hardware; // Puede ser null
     }
     
-    return $hardware; // Puede ser null
-}
     private function handleArpData(Computer $computer, string $ip): void
     {
         $arpResult = $this->arpService->arp($ip);

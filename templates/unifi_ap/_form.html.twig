@@ -1,0 +1,53 @@
+{% block message %}
+	{{ include('common/_messages.html.twig') }}
+{% endblock %}
+
+<div class="container-fluid">
+
+	{{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+	<div class="row">
+		<div class="col-lg-2">
+			{{ form_label(form.name) }}
+			{{ form_widget(form.name, {'attr': {'class': 'form-control form-control-sm'}}) }}
+		</div>
+
+		<div class="col-lg-2">
+			{{ form_label(form.ip) }}
+			{{ form_widget(form.ip, {'attr': {'class': 'form-control form-control-sm'}}) }}
+		</div>
+
+		<div class="col-lg-2">
+			{{ form_label(form.state) }}
+			{{ form_widget(form.state, {'attr': {'class': 'form-control form-control-sm'}}) }}
+		</div>
+
+		<div class="col-lg-2">
+			{{ form_label(form.mac) }}
+			{{ form_widget(form.mac, {'attr': {'class': 'form-control form-control-sm'}}) }}
+		</div>
+
+		<div class="col-lg-2">
+			{{ form_label(form.pingStatus) }}
+			{{ form_widget(form.pingStatus, {'attr': {'class': 'form-control form-control-sm'}}) }}
+		</div>
+
+		<div class="col-lg-2">
+			{{ form_label(form.lastSuccessfullPing) }}
+			{{ form_widget(form.lastSuccessfullPing, {'attr': {'class': 'form-control form-control-sm', 'data-controller' : 'datetimepicker', 'data-datetimepicker-format-value': 'yyyy-MM-dd'}}) }}
+		</div>
+	</div>
+	<div class="row mt-3">
+		<div class="col-lg-2 d-flex align-items-baseline form-check">
+			{{ form_label(form.excludeFromReport) }}
+			{{ form_widget(form.excludeFromReport, {'attr': {'class': 'form-check-input'}}) }}
+		</div>
+	</div>
+	<div id="buttons" class="mt-2">
+		<a href="{{ returnUrl is defined and not returnUrl is empty ? returnUrl : path('unifi_aps_index') }}" class="btn btn-secondary">{{ 'btn.cancel' | trans }}</a>
+		{% if not readonly %}
+			<button class="btn btn-primary" formnovalidate>{{ 'btn.save' | trans }}</button>
+		{% endif %}
+	</div>
+	{{ form_widget(form._token) }}
+	{{ form_end(form, {'render_rest': false}) }}
+</div>

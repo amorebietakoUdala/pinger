@@ -4,6 +4,7 @@ namespace App\Command;
 
 use App\Entity\MonitorizableEvent;
 use App\Repository\Default\ComputerRepository;
+use App\Repository\Default\UnifiAccessPointRepository;
 use App\Repository\MonitorizableEventRepository;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
@@ -14,11 +15,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Twig\Environment;
 
-#[AsCommand('app:pinger-nohost-report', 'Send an email with the switched computers (No host) list')]
-class DailyPingerNoHostReportCommand extends Command
+#[AsCommand('app:unifi-accesspoint-report', 'Send an email with not responding Unifi Access Points')]
+class DailyUnifiAccessPointReportCommand extends Command
 {
     public function __construct(
-        private readonly ComputerRepository $compRepo, 
+        private readonly UnifiAccessPointRepository $repo, 
         private readonly MailerInterface $mailer, 
         private Environment $twig, 
         private readonly string $mailerFrom, 
@@ -34,7 +35,7 @@ class DailyPingerNoHostReportCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
-        $this->sendMessage('[Pinger] Eguneko txostena Host ez dutenentzako', $this->mailerTo);
+        $this->sendMessage('[Pinger] Eguneko AccessPoint txostena', $this->mailerTo);
         return Command::SUCCESS;
     }
 
@@ -44,17 +45,18 @@ class DailyPingerNoHostReportCommand extends Command
 
     private function sendMessage($subject, $emails)
     {
-        $computers = $this->compRepo->getComputerByDayWithoutHost();
-        if ($computers === null || count($computers) === 0) {
+        // Fetch Unifi Access Points that are offline and unreachable. Send an email only if there are any.
+        $aps = $this->repo->findByStateAndPingStatus('Offline', 'unreachable');
+        if ($aps === null || count($aps) === 0) {
             return;
-        }        
+        }
         $email = (new TemplatedEmail())
             ->from($this->mailerFrom)
             ->to(...$emails)
             ->subject($subject)
-            ->htmlTemplate('/computer/mailnohost.html.twig')
+            ->htmlTemplate('/unifi_ap/mail.html.twig')
             ->context([
-                'computers' => $computers,
+                'aps' => $aps,
             ]);
         $this->mailer->send($email);
         return;

@@ -36,10 +36,6 @@ class ComputerRepository extends ServiceEntityRepository
             $qb = $this->andWhereHostnameLike($qb, $filter['hostname']);
         }
 
-        if ($filter['status'] !== null) {
-            $qb = $this->andWhereStatus($qb, $filter['status']);
-        }
-
         if ($filter['mac'] !== null) {
             $qb = $this->andWhereMacLike($qb, $filter['mac']);
         }
@@ -86,13 +82,6 @@ class ComputerRepository extends ServiceEntityRepository
         });
     }
 
-    private function andWherestatus(QueryBuilder $qb, string $status): QueryBuilder
-    {
-        $qb = $qb->andWhere('c.status = :status')
-            ->setParameter('status', $status);
-        return $qb;
-    }
-
     private function andWhereMacLike(QueryBuilder $qb, string $mac): QueryBuilder
     {
         $qb = $qb->andWhere('c.mac LIKE :mac')
@@ -121,7 +110,8 @@ class ComputerRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('c')
             ->andWhere('c.lastSucessfullPing >= :today')
             ->setParameter('today', $today)
-            ->andWhere('c.necessary is null or c.necessary = false');
+            ->andWhere('c.necessary is null or c.necessary = false')
+            ->orderBy('c.hostname', 'ASC');
 
         return $qb->getQuery()->getResult();
     }

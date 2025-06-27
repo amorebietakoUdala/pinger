@@ -1,0 +1,69 @@
+<div class="container-fluid" {# {{ stimulus_controller('modal') }} #}>
+	{% if phones is defined and phones|length > 0 %}
+
+		<table id="taula" class="table bootstrap-table" {{ stimulus_controller('table', { 'url': path('phone_index'), 'exportName': 'phones', } ) }} 
+			data-page-number="{{ page }}" 
+			data-page-size="{{ pageSize ?? 100 }}" 
+			data-sort-name="{{ sortName }}" 
+			data-sort-order="{{ sortOrder }}" 
+			data-toolbar="#toolbar">
+			<thead>
+				<tr>
+					<th data-sortable="true">{{ 'id' | trans }}</th>
+					<th data-sortable="true">{{ 'phone.ip' | trans }}</th>
+					<th data-sortable="true">{{ 'phone.mac' | trans }}</th>
+					<th data-sortable="true">{{ 'phone.extension' | trans }}</th>
+					<th data-sortable="true">{{ 'phone.model' | trans }}</th>
+					<th data-sortable="true">{{ 'phone.firmware' | trans }}</th>
+					{# <th>Options</th> #}
+				</tr>
+			</thead>
+			<tbody>
+				{% for phone in phones %}
+					<tr>
+						<td>{{ phone.id }}</td>
+						<td><a href="http://{{phone.ip}}" target="_blank">{{ phone.ip }}</td>
+						<td>{{ phone.mac }}</td>
+						<td>{{ phone.extension }}</td>
+						<td>{{ phone.model }}</td>
+						<td>{{ phone.firmware }}</td>
+						{# <td>
+							<a class="text-decoration-none" href="{{ path ("phone_show",{'id': phone.id })}}" data-action="click->table#onClick" data-pagination="false">
+								<i class="fa fa-eye"></i>
+							</a>
+
+							&nbsp;<a class="text-decoration-none" href="{{ path ("phone_edit",{'id': phone.id })}}" data-action="click->table#onClick" data-pagination="false">
+								<i class="fa fa-edit"></i>
+							</a>
+
+							&nbsp;
+							<a class="text-decoration-none" data-action="click->modal#openping" data-url="{{ absolute_url( path('phone_ping', {'id': phone.id}) )}}" data-message="{{ "message.noIp" | trans }}">
+								<i class="fas fa-wifi" title='{{ "btn.ping" | trans | capitalize }}'></i>
+							</a>
+							&nbsp;
+							<a class="text-decoration-none" data-action="click->modal#openarp" data-url="{{ absolute_url( path('phone_arp', {'id': phone.id}) )}}" data-message="{{ "message.noIp" | trans }}">
+								<i class="fas fa-broadcast-tower" title='{{ "btn.arp" | trans | capitalize }}'></i>
+							</a>
+							&nbsp;
+							{% if not phone.necessary %}
+								<a href="{{ path ('phone_delete',{'id': phone.id })}}" data-action="click->table#onClick" data-pagination="true" data-return="false" data-confirm="true">
+									<i class="fa fa-trash"></i>
+								</a>
+							{% endif %}
+						</td> #}
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		{{ include('common/_alert.html.twig') }}
+	{% else %}
+		<div class="alert alert-info text-center">
+			{{'message.no_records' | trans }}
+		</div>
+	{% endif %}
+	{# {{ include('common/_modal.html.twig', {
+      		'modalTitle': 'message.confirmationTitle' | trans,
+      		}) 
+   		}} #}
+</div>

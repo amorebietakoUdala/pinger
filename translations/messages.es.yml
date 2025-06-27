@@ -8,6 +8,10 @@ navitem.subnets: "Subredes"
 navitem.subnet.list: "Lista"
 navitem.hardware: "Hardware"
 navitem.hardware.list: "Lista"
+navitem.phones: "Teléfonos"
+navitem.phone.list: "Lista"
+navitem.unifiAps: "Unifi APs"
+navitem.unifiAp.list: "Lista"
 
 # Labels
 label.options: 'Opciones'
@@ -19,9 +23,14 @@ title.computer.search: "Ordenadores"
 title.computer.show: "Ordenador"
 title.subnet.search: "Subredes"
 title.hardware.search: "Hardware"
+title.phone.search: "Teléfonos"
+title.unifi_aps.search: "Unifi APs"
+title.unifiAp.edit: "Editar"
+title.unifiAp.show: "Mostrar"
+  
 
 # Entities
-computer.id: "Id"
+id: "Id"
 computer.hostname: "Hostname"
 computer.ip: "Ip"
 computer.status: "Estado"
@@ -55,6 +64,21 @@ hardware.lastdate: 'Último inventario'
 hardware.lastcome: 'Último contacto'
 hardware.userid: 'Último contacto'
 
+phone.ip: "Ip"
+phone.mac: "Mac"
+phone.extension: "Extensión"
+phone.model: "Modelo"
+phone.firmware: "Firmware"
+
+unifiAp.ip: "Ip"
+unifiAp.mac: "Mac"
+unifiAp.name: "Nombre"
+unifiAp.state: "Estado"
+unifiAp.lastTimeOnline: "Última Vez Online"
+unifiAp.pingStatus: "Estado del ping"
+unifiAp.lastSuccessfullPing: "Último ping exitoso"
+unifiAp.excludeFromReport: "Excluir de los informes"
+
 text.last.number: "Último número : "
 
 # Buttons
@@ -80,12 +104,17 @@ message.computer.deleted: "El ordenador se ha borrado correctamente"
 message.computererror.search: "Tienes que rellenar los campos de Ip de inicio y de fin"
 message.computer.error.necessary: "El ordenador no se puede borrar porque está marcado como necesario"
 message.confirmationTitle: "Detalles"
+message.computer.error.ip: "Debes rellenar tanto la IP de inicio como la de fin."
+message.unifiAccessPoint.deleted: "El Access Point se ha borrado correctamente"
 
 # Mail
 text.mailnohost: "Los siguientes ordenadores no tienen hostname"
 label.hostname: "Hostname"
 label.ip: "Ip"
 label.lastSucessfullPing: "Ultimo ping exitoso"
+label.name: "Nombre"
+label.state: "Estado"
+label.pingStatus: "Estado del ping"
 label.hardwareId: "Id de Hardware"
 messages.results0: "No hay resultados"
 

@@ -20,8 +20,13 @@ use Symfony\Component\Process\Exception\ProcessTimedOutException;
 class PingerService
 {
 
-   public function ping(Hardware|Computer $computer) {
-      $process = new Process(['ping', '-c', '1', $computer->getIp()]);
+   public function ping(Hardware|Computer|string $computer) {
+      if (gettype($computer) !== 'string') {
+         $ip = $computer->getIp();
+      } else {
+         $ip = $computer;
+      }
+      $process = new Process(['ping', '-c', '1', $ip]);
       $process->setEnv(['LANG' => 'es_ES.UTF-8']);
       $process->setTimeout(60);
       $process->run();
