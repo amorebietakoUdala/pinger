@@ -70,6 +70,7 @@ class UnifiAccessPointPingerCommand extends Command
             $ip = $device['ip'];
             $name = $device['name'] ?? 'Unknown';
             $state = $device['state'] ?? 'Unknown';
+            $disabled = $device['disabled'] ?? false;
             // $start_connected_millis = $device['start_connected_millis'];
             
             // $startConnectedDate('Y-m-d H:i:s', $start_connected_millis);
@@ -88,7 +89,8 @@ class UnifiAccessPointPingerCommand extends Command
 
             // Update the status and other fields
             $accessPoint->setState(UnifiAccessPoint::STATES[$state] ?? $state);
-            if ( $state === '1' ) {
+            $accessPoint->setDisabled($disabled);
+            if ( $state === 1 ) {
                 $accessPoint->setLastTimeOnline(new \DateTime());
             }
             // Add any other fields you want to update
@@ -96,11 +98,12 @@ class UnifiAccessPointPingerCommand extends Command
             $parsedResult = $this->pingerService->parsePingResult($result);
             $datetime = new \DateTime();
             $datetimeString = $datetime->format('Y-m-d H:i:s');
+            $lastTimeOnLineString = $accessPoint->getLastTimeOnline() !== null ? $accessPoint->getLastTimeOnline()->format('Y-m-d H:i:s') : '';
             if (!isset($parsedResult['ip']) || $parsedResult['ip'] === null || $parsedResult['status'] !== 'alive') {
-                $io->writeln($datetimeString.' - '.$accessPoint->getIp() . ' - mac: ' . $accessPoint->getMac() . ' - name: ' . $accessPoint->getName() . ' - state: ' . $accessPoint->getState() . ' - ping: Unsuccessful');
+                $io->writeln($datetimeString.' - '.$accessPoint->getIp() . ' - mac: ' . $accessPoint->getMac() . ' - name: ' . $accessPoint->getName() . ' - state: ' . $accessPoint->getState() . ' - ping: Unsuccessful - LastTimeOnLine: '. $lastTimeOnLineString);
                 $accessPoint->setPingStatus('unreachable');
             } else {
-                $io->writeln($datetimeString.' - '. $accessPoint->getIp() . ' - mac: ' . $accessPoint->getMac() . ' - name: ' . $accessPoint->getName() . ' - state: ' . $accessPoint->getState() . ' - ping: Successful');
+                $io->writeln($datetimeString.' - '. $accessPoint->getIp() . ' - mac: ' . $accessPoint->getMac() . ' - name: ' . $accessPoint->getName() . ' - state: ' . $accessPoint->getState() . ' - ping: Successful - LastTimeOnLine: '. $lastTimeOnLineString);
                 $accessPoint->setPingStatus('alive');
                 $accessPoint->setLastSuccessfullPing(new \DateTime());
             }

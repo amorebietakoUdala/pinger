@@ -46,6 +46,9 @@ class UnifiAccessPoint
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $lastTimeOnline = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $disabled = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -143,6 +146,18 @@ class UnifiAccessPoint
     public function setLastTimeOnline(?\DateTimeInterface $lastTimeOnline): static
     {
         $this->lastTimeOnline = $lastTimeOnline;
+
+        return $this;
+    }
+
+    public function isDisabled(): ?bool
+    {
+        return $this->disabled;
+    }
+
+    public function setDisabled(?bool $disabled): static
+    {
+        $this->disabled = $disabled;
 
         return $this;
     }

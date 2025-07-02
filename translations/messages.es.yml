@@ -78,6 +78,7 @@ unifiAp.lastTimeOnline: "Última Vez Online"
 unifiAp.pingStatus: "Estado del ping"
 unifiAp.lastSuccessfullPing: "Último ping exitoso"
 unifiAp.excludeFromReport: "Excluir de los informes"
+unifiAp.disabled: "Deshabilitado"
 
 text.last.number: "Último número : "
 
@@ -115,6 +116,8 @@ label.lastSucessfullPing: "Ultimo ping exitoso"
 label.name: "Nombre"
 label.state: "Estado"
 label.pingStatus: "Estado del ping"
+label.lastTimeOnline: "Última Vez Online"
+label.disabled: "Excluir de los informes"
 label.hardwareId: "Id de Hardware"
 messages.results0: "No hay resultados"
 

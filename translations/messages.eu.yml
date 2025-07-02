@@ -77,6 +77,7 @@ unifiAp.lastTimeOnline: "Online azkenengo aldiz"
 unifiAp.pingStatus: "Azken ping egoera"
 unifiAp.lastSuccessfullPing: "Azken ping arrakastatsuaren data"
 unifiAp.excludeFromReport: "Txostenetatik kanpo utzi"
+unifiAp.disabled: "Desgaituta"
 
 text.last.number: "Azken zenbakia : "
 
@@ -115,6 +116,8 @@ label.lastSucessfullPing: "Azken ping-a ondo"
 label.name: "Izena"
 label.state: "Egoera"
 label.pingStatus: "Ping egoera"
+label.lastTimeOnline: "Azkenengoz online"
+label.disabled: "Desgaituta"
 label.hardwareId: "Hardware Id-a"
 messages.results0: "Ez dago emaitzarik"
 

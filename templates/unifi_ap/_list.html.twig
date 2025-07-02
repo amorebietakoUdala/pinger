@@ -15,6 +15,7 @@
 					<th data-sortable="true">{{ 'unifiAp.mac' | trans }}</th>
 					<th data-sortable="true">{{ 'unifiAp.state' | trans }}</th>
 					<th data-sortable="true">{{ 'unifiAp.lastTimeOnline' | trans }}</th>
+					<th data-sortable="true">{{ 'unifiAp.disabled' | trans }}</th>
 					<th data-sortable="true">{{ 'unifiAp.pingStatus' | trans }}</th>
 					<th data-sortable="true">{{ 'unifiAp.lastSuccessfullPing' | trans }}</th>
 					<th data-sortable="true">{{ 'unifiAp.excludeFromReport' | trans }}</th>
@@ -30,6 +31,7 @@
 						<td>{{ unifiAp.mac }}</td>
 						<td>{{ unifiAp.state }}</td>
 						<td>{{ unifiAp.lastTimeOnline != null ? unifiAp.lastTimeOnline | date('Y-m-d h:i') : '' }}</td>
+						<td>{{ unifiAp.disabled ? 'label.yes' | trans : 'label.no' | trans }}</td>
 						<td>{{ unifiAp.pingStatus }}</td>
 						<td>{{ unifiAp.lastSuccessfullPing != null ? unifiAp.lastSuccessfullPing | date('Y-m-d h:i') : '' }}</td>
 						<td>{{ unifiAp.excludeFromReport ? 'label.yes' | trans : 'label.no' | trans }}</td>

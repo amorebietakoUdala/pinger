@@ -18,6 +18,8 @@
                         <th data-sortable="true" data-field="state" style="text-align: left">{{"label.state" | trans | capitalize}}</th>
                         <th data-sortable="true" data-field="pingStatus" style="text-align: left">{{"label.pingStatus" | trans | capitalize}}</th>
                         <th data-sortable="true" data-field="lastSucessfullPing" style="text-align: left">{{"label.lastSucessfullPing" | trans | capitalize}}</th>
+                        <th data-sortable="true" data-field="lastTimeOnline" style="text-align: left">{{"label.lastTimeOnline" | trans | capitalize}}</th>
+                        <th data-sortable="true" data-field="disabled" style="text-align: left">{{"label.disabled" | trans | capitalize}}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,6 +31,8 @@
                                 <td>{{ ap.state }}</td>
                                 <td>{{ ap.pingStatus }}</td>
                                 <td>{{ ap.lastSuccessfullPing != null ?  ap.lastSuccessfullPing | date('d/m/Y H:i:s') : ''}}</td>
+                                <td>{{ ap.lastTimeOnline != null ?  ap.lastTimeOnline | date('d/m/Y H:i:s') : ''}}</td>
+                                <td>{{ ap.disabled ? 'label.yes' | trans : 'label.no' | trans }}</td>
                             </tr>
                         {% endfor %}
                     {% else %}
