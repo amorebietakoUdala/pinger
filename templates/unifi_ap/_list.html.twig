@@ -46,22 +46,6 @@
 							&nbsp;<a href="{{ path ('unifi_aps_delete',{'id': unifiAp.id })}}" data-action="click->table#onClick" data-pagination="true" data-return="false" data-confirm="true">
 								<i class="fa fa-trash"></i>
 							</a>
-						{#
-							&nbsp;
-							<a class="text-decoration-none" data-action="click->modal#openping" data-url="{{ absolute_url( path('phone_ping', {'id': unifiAp.id}) )}}" data-message="{{ "message.noIp" | trans }}">
-								<i class="fas fa-wifi" title='{{ "btn.ping" | trans | capitalize }}'></i>
-							</a>
-							&nbsp;
-							<a class="text-decoration-none" data-action="click->modal#openarp" data-url="{{ absolute_url( path('phone_arp', {'id': unifiAp.id}) )}}" data-message="{{ "message.noIp" | trans }}">
-								<i class="fas fa-broadcast-tower" title='{{ "btn.arp" | trans | capitalize }}'></i>
-							</a>
-							&nbsp;
-							{% if not unifiAp.necessary %}
-								<a href="{{ path ('phone_delete',{'id': unifiAp.id })}}" data-action="click->table#onClick" data-pagination="true" data-return="false" data-confirm="true">
-									<i class="fa fa-trash"></i>
-								</a>
-							{% endif %}
-						 #}
 						</td>
 					</tr>
 				{% endfor %}
@@ -74,8 +58,4 @@
 			{{'message.no_records' | trans }}
 		</div>
 	{% endif %}
-	{# {{ include('common/_modal.html.twig', {
-      		'modalTitle': 'message.confirmationTitle' | trans,
-      		}) 
-   		}} #}
 </div>

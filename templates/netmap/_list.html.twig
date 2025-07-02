@@ -11,7 +11,6 @@
 					<th data-sortable="true">{{ 'netmap.name' | trans }}</th>
 					<th data-sortable="true">{{ 'netmap.tag' | trans }}</th>
 					<th data-sortable="true">{{ 'netmap.hardwareId' | trans }}</th>
-					{# <th>{{ 'netmap.harware' | trans }}</th> #}
 					<th>{{ 'table.options' | trans }}</th>
 				</tr>
 			</thead>
@@ -26,24 +25,7 @@
 						<td>{{ netmap.name }}</td>
 						<td>{{ netmap.tag }}</td>
 						<td>{{ netmap.hardwareId }}</td>
-						{# <td>{{ netmap.lastSucessfullPing ? netmap.lastSucessfullPing | date('Y-m-d') : '' }}</td> #}
 						<td>
-							{# <a class="icon" href="{{ path ("computer_show",{'id': netmap.id })}}" data-action="click->table#onClick" data-pagination="false">
-								<i class="fa fa-eye"></i>
-							</a>
-
-							&nbsp;<a class="icon" href="{{ path ("computer_edit",{'id': netmap.id })}}" data-action="click->table#onClick" data-pagination="false">
-								<i class="fa fa-edit"></i>
-							</a>
-
-							&nbsp;
-							<a class="text-decoration-none" data-action="click->modal#openping" data-url="{{ absolute_url( path('computer_ping', {'id': netmap.id}) )}}" data-message="{{ "message.noIp" | trans }}">
-								<i class="fas fa-wifi" title='{{ "btn.ping" | trans | capitalize }}'></i>
-							</a>
-							&nbsp;
-							<a class="text-decoration-none" data-action="click->modal#openarp" data-url="{{ absolute_url( path('computer_arp', {'id': netmap.id}) )}}" data-message="{{ "message.noIp" | trans }}">
-								<i class="fas fa-broadcast-tower" title='{{ "btn.arp" | trans | capitalize }}'></i>
-							</a> #}
 						</td>
 					</tr>
 				{% endfor %}
@@ -56,8 +38,4 @@
 			{{'message.no_records' | trans }}
 		</div>
 	{% endif %}
-	{# {{ include('common/_modal.html.twig', {
-      		'modalTitle': 'modal.title.netmap' | trans,
-      		}) 
-   		}} #}
 </div>

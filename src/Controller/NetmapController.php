@@ -25,7 +25,7 @@ final class NetmapController extends BaseController
         $this->loadQueryParameters($request);
         $this->queryParams['pageSize'] = $request->get('pageSize') ?? 200;
         $netmaps = $this->repo->findAll();
-        //dd($netmaps);
+        
         return $this->render('netmap/index.html.twig', [
             'netmaps' => $netmaps,
         ]);

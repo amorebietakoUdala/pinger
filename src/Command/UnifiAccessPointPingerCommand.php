@@ -71,9 +71,6 @@ class UnifiAccessPointPingerCommand extends Command
             $name = $device['name'] ?? 'Unknown';
             $state = $device['state'] ?? 'Unknown';
             $disabled = $device['disabled'] ?? false;
-            // $start_connected_millis = $device['start_connected_millis'];
-            
-            // $startConnectedDate('Y-m-d H:i:s', $start_connected_millis);
 
             // Check if the access point already exists in the database
             /** @var UnifiAccessPoint $accessPoint */  
