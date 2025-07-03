@@ -27,5 +27,6 @@
     },
     "resolutions": {
         "jquery": "3.6.1"
-    }
+    },
+    "packageManager": "yarn@3.3.1"
 }

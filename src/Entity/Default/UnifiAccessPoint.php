@@ -13,6 +13,7 @@ class UnifiAccessPoint
         '0' => 'Offline',
         '1' => 'Up to date',
         '2' => 'Managed by Another Console?',
+        '10' => 'Adopting',
         '11' => 'Isolated',
         null => 'Unknown',
     ];
