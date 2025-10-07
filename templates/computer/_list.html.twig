@@ -19,6 +19,7 @@
 					<th data-sortable="true">{{ 'computer.alive' | trans }}</th>
 					<th data-sortable="true">{{ 'computer.lastSucessfullPing' | trans }}</th>
 					<th data-sortable="true">{{ 'computer.lastOcsContact' | trans }}</th>
+					<th data-sortable="true">{{ 'computer.updatedAt' | trans }}</th>
 					<th data-sortable="true">{{ 'computer.origin' | trans }}</th>
 					<th data-sortable="true">{{ 'computer.necessary' | trans }}</th>
 					<th>{{ 'table.options' | trans }}</th>
@@ -44,6 +45,7 @@
 						{% endif %}
 						<td>{{ computer.lastSucessfullPing ? computer.lastSucessfullPing | date('Y-m-d h:i') : '' }}</td>
 						<td>{{ computer.lastOcsContact ? computer.lastOcsContact | date('Y-m-d h:i') : '' }}</td>
+						<td>{{ computer.updatedAt ? computer.updatedAt | date('Y-m-d h:i') : '' }}</td>
 						{% if computer.hardwareId is not empty %}
 							<td>
 								<a target="_blank" href="http://inbentario/ocsreports/index.php?function=computer&head=1&systemid={{ computer.hardwareId }}">{{ computer.origin }}</a>

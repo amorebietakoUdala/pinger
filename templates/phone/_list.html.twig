@@ -15,6 +15,7 @@
 					<th data-sortable="true">{{ 'phone.extension' | trans }}</th>
 					<th data-sortable="true">{{ 'phone.model' | trans }}</th>
 					<th data-sortable="true">{{ 'phone.firmware' | trans }}</th>
+					<th data-sortable="true">{{ 'phone.updatedAt' | trans }}</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -26,6 +27,7 @@
 						<td>{{ phone.extension }}</td>
 						<td>{{ phone.model }}</td>
 						<td>{{ phone.firmware }}</td>
+						<td>{{ phone.updatedAt ? phone.updatedAt | date('Y-m-d h:i') : '' }}</td>
 					</tr>
 				{% endfor %}
 			</tbody>

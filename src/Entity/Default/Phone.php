@@ -4,10 +4,14 @@ namespace App\Entity\Default;
 
 use App\Repository\Default\PhoneRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 #[ORM\Entity(repositoryClass: PhoneRepository::class)]
 class Phone
 {
+
+    use TimestampableEntity;
+    
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

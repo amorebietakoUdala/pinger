@@ -6,6 +6,7 @@ use App\Repository\Default\ComputerRepository;
 use Doctrine\DBAL\Types\Types;
 use Symfony\Component\Ldap\Entry;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 #[ORM\Entity(repositoryClass: ComputerRepository::class)]
 #[ORM\Index(columns: ['hostname'])]
@@ -13,6 +14,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 class Computer
 {
+    use TimestampableEntity;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
